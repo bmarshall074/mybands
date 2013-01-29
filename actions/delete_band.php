@@ -3,7 +3,7 @@ session_start();
 // Read file into array
 $lines = file('../data/bands.csv', FILE_IGNORE_NEW_LINES);
 
-$lines = unset($lines);
+unset($lines[$_GET['linenum']]);
 
 $data_string = implode("\n",$lines);
 
@@ -11,9 +11,12 @@ $f = fopen('../data/bands.csv','w');
 fwrite($f,$data_string);
 fclose($f);
 
-$_SESSION['message'] = 'The band has been deleted. It is gone... forever. Congratulations, you monster. Why does a scourge like youself exist upon this planet? You know what... no... I dont wanna know!';
-header('Location:../?p=list_bands');
+$_SESSION['message'] =  array(
+	'text' => 'The band has been deleted. It is gone... forever. Congratulations, you monster. Why does a scourge like youself exist upon this planet? You know what... no... I dont wanna know!',
+	'type' => 'error'
+);
 
+header('Location:../?p=list_bands');
 ?>
 
 
