@@ -2,7 +2,7 @@
 // Display message if there is one in Session Data
 if(isset($_SESSION['message'])) {
 	// Display message
-	echo "<div class=\"alert alert-{$_SESSION['message']['type']}\" >{$_SESSION['message']['text']}</div>";
+	echo "<div class=\"alert alert-{$_SESSION['message']['type']}\">{$_SESSION['message']['text']}</div>";
 	
 	// Display message from session
 	unset($_SESSION['message']['text']);
